@@ -2,10 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Postcontroller;
 
-Route::get('/', function(){
-    return response("bite", 200);
-});
+Route::get('post',[Postcontroller::class,'getpost']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
