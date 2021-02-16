@@ -29,4 +29,16 @@ class Postcontroller extends Controller
         }
         return response($array, 200);
     }
+    function storepost(Request $request) {
+        $post = new Post();
+        $post->title = $request->title;
+        $post->user = $request->user;
+        $post->link = $request->link;
+        $post->likes = $request->likes;
+        $post->shares = $request->shares;
+        $post->comment = $request->comment;
+        $post->img = $request->img;
+        $post->save();
+        return response("success", 200);
+    }
 }
