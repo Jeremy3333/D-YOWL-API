@@ -8,7 +8,7 @@ use App\Models\Post;
 
 class Postcontroller extends Controller
 {
-    function getpost(){
+    function getposts(){
         $posts = Post::all();
         $array = [];
         foreach($posts as $post) {
@@ -17,6 +17,15 @@ class Postcontroller extends Controller
                 "title" => json_decode($post, true)["title"],
                 "img" => json_decode($post, true)["img"],
             ]);
+        }
+        return response($array, 200);
+    }
+    function getpost(Request $request, $id){
+        $posts = Post::all();
+        foreach($posts as $post) {
+            if($id == json_decode($post, true)["id"]){
+                $array = $post;
+            }
         }
         return response($array, 200);
     }
