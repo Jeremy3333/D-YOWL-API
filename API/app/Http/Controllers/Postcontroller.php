@@ -31,6 +31,13 @@ class Postcontroller extends Controller
         return response($array, 200);
     }
     function storepost(Request $request) {
+        $file = base64_decode($request->img);
+        $folderName = 'public/img/';
+        $safeName = time().'.'.'png';
+        $destinationPath = public_path() . $folderName;
+        $success = file_put_contents(public_path().'/img/'.$safeName, $file);
+        $local = "http://localhost:8000/img/" + $safeName;
+        print $success;
         $post = new Post();
         $post->title = $request->title;
         $post->user = $request->user;
@@ -38,7 +45,7 @@ class Postcontroller extends Controller
         $post->likes = $request->likes;
         $post->shares = $request->shares;
         $post->comment = $request->comment;
-        $post->img = $request->img;
+        $post->img = $local;
         $post->save();
         return response("success", 200);
     }
