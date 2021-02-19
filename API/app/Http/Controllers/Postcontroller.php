@@ -36,7 +36,7 @@ class Postcontroller extends Controller
         $safeName = time().'.'.'png';
         $destinationPath = public_path() . $folderName;
         $success = file_put_contents(public_path().'/img/'.$safeName, $file);
-        $local = "http://localhost:8000/img/" + $safeName;
+        $local = "http://localhost:8000/img/$safeName";
         print $success;
         $post = new Post();
         $post->title = $request->title;
