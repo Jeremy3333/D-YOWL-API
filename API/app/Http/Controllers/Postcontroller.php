@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Intervention\Image\ImageManagerStatic as Image;
 
 
 class Postcontroller extends Controller
@@ -40,5 +41,13 @@ class Postcontroller extends Controller
         $post->img = $request->img;
         $post->save();
         return response("success", 200);
+    }
+    function test(Request $request) {
+        $file = base64_decode($request->img);
+        $folderName = 'public/img/';
+        $safeName = time().'.'.'png';
+        $destinationPath = public_path() . $folderName;
+        $success = file_put_contents(public_path().'/img/'.$safeName, $file);
+        print $success;
     }
 }

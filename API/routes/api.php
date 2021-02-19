@@ -7,6 +7,7 @@ use App\Http\Controllers\Postcontroller;
 Route::get('post',[Postcontroller::class,'getposts']);
 Route::get('post/{id}',[Postcontroller::class,'getpost']);
 Route::post('post',[Postcontroller::class,'storepost']);
+Route::post('test',[Postcontroller::class,'test']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
