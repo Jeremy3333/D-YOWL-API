@@ -14,6 +14,7 @@ class UserController extends Controller
             array_push($array,[
                 "id" => json_decode($user, true)["id"],
                 "username" => json_decode($user, true)["username"],
+                "email" => json_decode($user, true)["email"],
                 "pdp" => json_decode($user, true)["pdp"],
             ]);
         }
